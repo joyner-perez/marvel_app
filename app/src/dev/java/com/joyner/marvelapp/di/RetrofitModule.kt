@@ -17,14 +17,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
-    @Provides
     @Singleton
+    @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
 
-    @Provides
     @Singleton
+    @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient().newBuilder()
             .callTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS).readTimeout(60, TimeUnit.SECONDS)
@@ -33,8 +33,8 @@ class RetrofitModule {
             })
             .build()
 
-    @Provides
     @Singleton
+    @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         moshi: Moshi

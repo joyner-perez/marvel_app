@@ -1,3 +1,4 @@
 <resources>
     <string name="loading">Please wait…</string>
+    <string name="error_get_marvel_characters">An error has occurred when obtaining the characters</string>
 </resources>

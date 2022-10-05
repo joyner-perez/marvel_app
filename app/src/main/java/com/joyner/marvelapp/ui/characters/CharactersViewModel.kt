@@ -1,6 +1,5 @@
 package com.joyner.marvelapp.ui.characters
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,16 +16,15 @@ import javax.inject.Inject
 class CharactersViewModel @Inject constructor(
 private val marvelUseCases: MarvelUseCases
 ): ViewModel() {
+    var marvelCharacters by mutableStateOf<Response<List<MarvelCharacter>>>(Response.Success(emptyList()))
+        private set
+
     init {
         getMarvelCharacters()
     }
 
-    var marvelCharacters by mutableStateOf<Response<List<MarvelCharacter>>>(Response.Success(emptyList()))
-        private set
-
     fun getMarvelCharacters() = viewModelScope.launch {
         marvelUseCases.getMarvelCharacters().collect { response ->
-            Log.i("RESPONSE", response.toString())
             marvelCharacters = response
         }
     }
