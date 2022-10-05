@@ -1,4 +1,4 @@
-package com.joyner.marvelapp.ui.detailcharacter
+package com.joyner.marvelapp.ui.characters
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.ui.characters.CharacterImage
 
 @Composable
 fun CharacterItem(marvelCharacter: MarvelCharacter) {
