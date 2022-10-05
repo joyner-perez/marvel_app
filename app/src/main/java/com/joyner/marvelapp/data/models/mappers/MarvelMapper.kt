@@ -7,6 +7,10 @@ object MarvelMapper {
     fun Result.toMarvelCharacters() = MarvelCharacter(
         id = id,
         name = name,
-        thumbnail = "${thumbnail.path}.${thumbnail.extension}"
+        thumbnail = "${thumbnail.path}.${thumbnail.extension}",
+        numberOfComics = comics.available,
+        numberOfEvents = events.available,
+        numberOfSeries = series.available,
+        numberOfStories = stories.available
     )
 }

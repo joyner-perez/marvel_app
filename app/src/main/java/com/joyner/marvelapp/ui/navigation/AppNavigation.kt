@@ -1,11 +1,13 @@
 package com.joyner.marvelapp.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.joyner.marvelapp.ui.characterdetail.CharacterDetailScreen
 import com.joyner.marvelapp.ui.characters.CharactersScreen
-import com.joyner.marvelapp.ui.detailcharacter.DetailCharacterScreen
 import com.joyner.marvelapp.ui.splash.SplashScreen
 
 @Composable
@@ -25,16 +27,17 @@ fun AppNavigation() {
         composable(AppScreens.CharactersScreen.route) {
             CharactersScreen(
                 navigateToDetailCharacterScreen = {
-                    navController.navigate(AppScreens.CharactersScreen.route)
+                    navController.navigate("${AppScreens.CharacterDetailScreen.route}/${it}")
                 }
             )
         }
-        composable(AppScreens.DetailCharacterScreen.route) {
-            DetailCharacterScreen(
-                navigateToCharactersScreen = {
-                    navController.popBackStack()
-                }
-            )
+        composable(
+            route = "${AppScreens.CharacterDetailScreen.route}/{characterId}",
+            arguments = listOf(navArgument("characterId") { type = NavType.IntType })
+        ) {
+            CharacterDetailScreen {
+                navController.popBackStack()
+            }
         }
     }
 }

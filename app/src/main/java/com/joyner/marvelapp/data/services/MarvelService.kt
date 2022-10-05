@@ -19,4 +19,16 @@ class MarvelService @Inject constructor(
             marvelClient.getMarvelCharacters(marvelRequest.apiKey, marvelRequest.ts, marvelRequest.hash)
         }
     }
+
+    suspend fun getMarvelCharacterDetail(characterId: Int): Response<MarvelCharactersResponse> {
+        return withContext(Dispatchers.IO) {
+            val marvelRequest = HashApi.createMarvelApiHash()
+            marvelClient.getMarvelCharacterDetail(
+                characterId,
+                marvelRequest.apiKey,
+                marvelRequest.ts,
+                marvelRequest.hash
+            )
+        }
+    }
 }

@@ -2,13 +2,11 @@ package com.joyner.marvelapp.ui.characters
 
 import android.util.Log
 import android.widget.Toast
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joyner.marvelapp.R
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
@@ -18,14 +16,14 @@ import com.pollenweather.ui.common.LoadingScreen
 @Composable
 fun CharactersScreen(
     charactersViewModel: CharactersViewModel = hiltViewModel(),
-    navigateToDetailCharacterScreen: () -> Unit
+    navigateToDetailCharacterScreen: (characterId: Int) -> Unit
 ) {
     val context = LocalContext.current
 
     when(val marvelCharacters = charactersViewModel.marvelCharacters) {
         is Response.Loading -> LoadingScreen()
         is Response.Success -> if (marvelCharacters.data.isNotEmpty()) {
-            Characters(marvelCharacters.data)
+            Characters(marvelCharacters.data, navigateToDetailCharacterScreen)
         }
         is Response.Failure -> LaunchedEffect(Unit) {
             Log.e("RESPONSE", "ERROR")
@@ -35,17 +33,18 @@ fun CharactersScreen(
 }
 
 @Composable
-fun Characters(data: List<MarvelCharacter>) {
-    LazyColumn(
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-    ) {
+fun Characters(
+    data: List<MarvelCharacter>,
+    navigateToDetailCharacterScreen: (characterId: Int) -> Unit
+) {
+    LazyColumn() {
         items(
             items = data,
             key = { character ->
                 character.id
             }
         ) { message ->
-            CharacterItem(message)
+            CharacterItem(message, navigateToDetailCharacterScreen)
         }
     }
 }

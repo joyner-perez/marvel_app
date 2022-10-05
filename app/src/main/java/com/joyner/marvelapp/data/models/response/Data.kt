@@ -7,13 +7,13 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Data(
     @Json(name = "count")
-    val count: Int = 0,
+    val count: Int,
     @Json(name = "limit")
-    val limit: Int = 0,
+    val limit: Int,
     @Json(name = "offset")
-    val offset: Int = 0,
+    val offset: Int,
     @Json(name = "results")
-    val results: List<Result> = emptyList(),
+    val results: List<Result>,
     @Json(name = "total")
-    val total: Int = 0
+    val total: Int
 )

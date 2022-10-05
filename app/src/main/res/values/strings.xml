@@ -1,4 +1,11 @@
 <resources>
     <string name="loading">Please wait…</string>
     <string name="error_get_marvel_characters">An error has occurred when obtaining the characters</string>
+
+    #Strings for character detail
+    <string name="title_character_detail_screen">Detail</string>
+    <string name="text_number_of_comics">Number of comics: %1$d</string>
+    <string name="text_number_of_series">Number of series: %1$d</string>
+    <string name="text_number_of_stories">Number of stories: %1$d</string>
+    <string name="text_number_of_events">Number of events: %1$d</string>
 </resources>

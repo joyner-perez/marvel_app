@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MarvelRepository {
     fun getMarvelCharacters(): Flow<Response<List<MarvelCharacter>>>
+
+    fun getMarvelCharacterDetail(characterId: Int): Flow<Response<MarvelCharacter>>
 }

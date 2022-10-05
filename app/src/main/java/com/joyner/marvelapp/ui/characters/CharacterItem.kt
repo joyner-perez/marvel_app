@@ -1,5 +1,6 @@
 package com.joyner.marvelapp.ui.characters
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,16 +20,19 @@ import androidx.compose.ui.unit.dp
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
 
 @Composable
-fun CharacterItem(marvelCharacter: MarvelCharacter) {
+fun CharacterItem(
+    marvelCharacter: MarvelCharacter,
+    onClick: (characterId: Int) -> Unit
+) {
     Card(
         modifier = Modifier
+            .clickable(onClick = {onClick(marvelCharacter.id)})
             .padding(all = 8.dp)
             .fillMaxWidth()
             .height(110.dp),
         elevation = 4.dp,
         backgroundColor = Color.White,
         shape = RoundedCornerShape(corner = CornerSize(16.dp))
-
     ) {
         Row(
             modifier = Modifier
@@ -36,7 +40,8 @@ fun CharacterItem(marvelCharacter: MarvelCharacter) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             CharacterImage(
-                urlImage = marvelCharacter.thumbnail
+                urlImage = marvelCharacter.thumbnail,
+                size = 84.dp
             )
             Column(
                 verticalArrangement = Arrangement.Center,

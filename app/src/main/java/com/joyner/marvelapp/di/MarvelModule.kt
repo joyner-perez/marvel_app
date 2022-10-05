@@ -4,6 +4,7 @@ import com.joyner.marvelapp.data.clients.MarvelClient
 import com.joyner.marvelapp.data.repositoriesimpl.MarvelRepositoryImpl
 import com.joyner.marvelapp.data.services.MarvelService
 import com.joyner.marvelapp.domain.repositories.MarvelRepository
+import com.joyner.marvelapp.domain.usecases.characters.GetMarvelCharacterDetail
 import com.joyner.marvelapp.domain.usecases.characters.GetMarvelCharacters
 import com.joyner.marvelapp.domain.usecases.characters.MarvelUseCases
 import dagger.Module
@@ -27,7 +28,8 @@ class MarvelModule {
     fun provideMarvelUseCases(
         repository: MarvelRepository
     ) = MarvelUseCases(
-        getMarvelCharacters = GetMarvelCharacters(repository)
+        getMarvelCharacters = GetMarvelCharacters(repository),
+        getMarvelCharacterDetail = GetMarvelCharacterDetail(repository)
     )
 
     @Singleton

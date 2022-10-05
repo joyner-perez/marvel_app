@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
@@ -16,7 +17,7 @@ import coil.compose.SubcomposeAsyncImageContent
 import coil.request.ImageRequest
 
 @Composable
-fun CharacterImage(urlImage: String) {
+fun CharacterImage(urlImage: String, size: Dp) {
     SubcomposeAsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
             .data(urlImage)
@@ -26,7 +27,7 @@ fun CharacterImage(urlImage: String) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .padding(8.dp)
-            .size(84.dp)
+            .size(size)
             .clip(CircleShape)
     ) {
         val state = painter.state
