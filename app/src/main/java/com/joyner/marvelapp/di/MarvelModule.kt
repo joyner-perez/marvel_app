@@ -4,9 +4,9 @@ import com.joyner.marvelapp.data.clients.MarvelClient
 import com.joyner.marvelapp.data.repositoriesimpl.MarvelRepositoryImpl
 import com.joyner.marvelapp.data.services.MarvelService
 import com.joyner.marvelapp.domain.repositories.MarvelRepository
-import com.joyner.marvelapp.domain.usecases.characters.GetMarvelCharacterDetail
+import com.joyner.marvelapp.domain.usecases.detailcharacter.GetMarvelCharacterDetail
 import com.joyner.marvelapp.domain.usecases.characters.GetMarvelCharacters
-import com.joyner.marvelapp.domain.usecases.characters.MarvelUseCases
+import com.joyner.marvelapp.domain.usecases.MarvelUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

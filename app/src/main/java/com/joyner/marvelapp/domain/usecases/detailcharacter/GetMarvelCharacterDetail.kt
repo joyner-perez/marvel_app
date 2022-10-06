@@ -1,4 +1,4 @@
-package com.joyner.marvelapp.domain.usecases.characters
+package com.joyner.marvelapp.domain.usecases.detailcharacter
 
 import com.joyner.marvelapp.domain.repositories.MarvelRepository
 
