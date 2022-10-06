@@ -20,18 +20,20 @@ class RetrofitModule {
     @Singleton
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient().newBuilder()
-            .callTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(30, TimeUnit.SECONDS).readTimeout(60, TimeUnit.SECONDS)
-            .addInterceptor(HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            })
-            .build()
+        .callTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            level =
+                if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        })
+        .build()
 
     @Singleton
     @Provides
@@ -39,8 +41,8 @@ class RetrofitModule {
         okHttpClient: OkHttpClient,
         moshi: Moshi
     ): Retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
+        .baseUrl(BuildConfig.BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .build()
 }
