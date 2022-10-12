@@ -7,7 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.data.models.main.Response
+import com.joyner.marvelapp.domain.models.Response
 import com.joyner.marvelapp.domain.usecases.MarvelUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +20,8 @@ class CharacterDetailViewModel @Inject constructor(
 ): ViewModel() {
     var characterId = mutableStateOf(savedStateHandle.get<Int>("characterId"))
         private set
-    var marvelCharacter by mutableStateOf<Response<MarvelCharacter>>(Response.Success(
+    var marvelCharacter by mutableStateOf<Response<MarvelCharacter>>(
+        Response.Success(
         MarvelCharacter()
     ))
         private set

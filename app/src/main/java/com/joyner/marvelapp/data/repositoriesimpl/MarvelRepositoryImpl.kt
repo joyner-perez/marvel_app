@@ -1,7 +1,7 @@
 package com.joyner.marvelapp.data.repositoriesimpl
 
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.data.models.main.Response
+import com.joyner.marvelapp.domain.models.Response
 import com.joyner.marvelapp.data.models.mappers.MarvelMapper.toMarvelCharacters
 import com.joyner.marvelapp.data.services.MarvelService
 import com.joyner.marvelapp.domain.repositories.MarvelRepository

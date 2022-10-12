@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.data.models.main.Response
+import com.joyner.marvelapp.domain.models.Response
 import com.joyner.marvelapp.domain.usecases.MarvelUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -1,7 +1,7 @@
 package com.joyner.marvelapp.domain.usecases.detailcharacter
 
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.data.models.main.Response
+import com.joyner.marvelapp.domain.models.Response
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking

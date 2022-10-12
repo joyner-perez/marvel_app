@@ -1,4 +1,4 @@
-package com.joyner.marvelapp.data.models.main
+package com.joyner.marvelapp.domain.models
 
 sealed class Response<out T> {
     object Loading: Response<Nothing>()

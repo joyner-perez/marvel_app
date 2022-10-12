@@ -1,7 +1,7 @@
 package com.joyner.marvelapp.domain.repositories
 
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
-import com.joyner.marvelapp.data.models.main.Response
+import com.joyner.marvelapp.domain.models.Response
 import kotlinx.coroutines.flow.Flow
 
 interface MarvelRepository {
