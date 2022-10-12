@@ -5,13 +5,16 @@ import com.joyner.marvelapp.data.models.main.Response
 import com.joyner.marvelapp.data.models.mappers.MarvelMapper.toMarvelCharacters
 import com.joyner.marvelapp.data.services.MarvelService
 import com.joyner.marvelapp.domain.repositories.MarvelRepository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MarvelRepositoryImpl @Inject constructor(
-    private val marvelService: MarvelService
+    private val marvelService: MarvelService,
+    private val dispatcher: CoroutineDispatcher
 ): MarvelRepository {
     override fun getMarvelCharacters() = flow {
         try {
@@ -29,7 +32,7 @@ class MarvelRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             emit(Response.Failure(e))
         }
-    }
+    }.flowOn(dispatcher)
 
     override fun getMarvelCharacterDetail(characterId: Int) = flow {
         try {
@@ -44,5 +47,5 @@ class MarvelRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             emit(Response.Failure(e))
         }
-    }
+    }.flowOn(dispatcher)
 }

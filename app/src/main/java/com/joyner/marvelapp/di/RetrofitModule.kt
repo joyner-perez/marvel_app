@@ -1,6 +1,7 @@
 package com.joyner.marvelapp.di
 
 import com.joyner.marvelapp.BuildConfig
+import com.joyner.marvelapp.data.clients.MarvelClient
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -17,6 +18,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
+
     @Singleton
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
@@ -45,4 +47,9 @@ class RetrofitModule {
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
+
+    @Provides
+    fun provideMarvelClient(
+        retrofit: Retrofit
+    ): MarvelClient = retrofit.create(MarvelClient::class.java)
 }

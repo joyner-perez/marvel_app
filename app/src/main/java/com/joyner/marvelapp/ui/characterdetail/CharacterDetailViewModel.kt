@@ -13,16 +13,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class CharacterDetailState(
-    val characterId: Int,
-)
-
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
     private val marvelUseCases: MarvelUseCases,
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
-    var state = mutableStateOf(CharacterDetailState(0))
+    var characterId = mutableStateOf(savedStateHandle.get<Int>("characterId"))
         private set
     var marvelCharacter by mutableStateOf<Response<MarvelCharacter>>(Response.Success(
         MarvelCharacter()
@@ -30,11 +26,7 @@ class CharacterDetailViewModel @Inject constructor(
         private set
 
     init {
-        val argument: Int = savedStateHandle["characterId"]!!
-        state.value = state.value.copy(
-            characterId = argument,
-        )
-        getMarvelCharacterDetail(state.value.characterId)
+        getMarvelCharacterDetail(characterId.value!!)
     }
 
     fun getMarvelCharacterDetail(characterId: Int) = viewModelScope.launch {
