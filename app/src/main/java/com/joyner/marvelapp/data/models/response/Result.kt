@@ -1,6 +1,7 @@
 package com.joyner.marvelapp.data.models.response
 
 
+import com.joyner.marvelapp.data.models.local.MarvelCharacter
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -28,4 +29,14 @@ data class Result(
     val thumbnail: Thumbnail,
     @Json(name = "urls")
     val urls: List<Url>
-)
+) {
+    fun toMarvelCharacters() = MarvelCharacter(
+        id = id,
+        name = name,
+        thumbnail = "${thumbnail.path}.${thumbnail.extension}",
+        numberOfComics = comics.available,
+        numberOfEvents = events.available,
+        numberOfSeries = series.available,
+        numberOfStories = stories.available
+    )
+}
