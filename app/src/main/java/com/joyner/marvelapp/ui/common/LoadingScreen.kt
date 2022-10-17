@@ -1,4 +1,4 @@
-package com.pollenweather.ui.common
+package com.joyner.marvelapp.ui.common
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable

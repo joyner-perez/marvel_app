@@ -21,7 +21,7 @@ import com.joyner.marvelapp.R
 import com.joyner.marvelapp.data.models.local.MarvelCharacter
 import com.joyner.marvelapp.domain.models.Response
 import com.joyner.marvelapp.ui.characters.CharacterImage
-import com.pollenweather.ui.common.LoadingScreen
+import com.joyner.marvelapp.ui.common.LoadingScreen
 
 @Composable
 fun CharacterDetailScreen(
