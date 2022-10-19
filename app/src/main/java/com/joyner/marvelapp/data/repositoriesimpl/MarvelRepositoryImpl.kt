@@ -31,7 +31,7 @@ class MarvelRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             emit(Response.Failure(e))
         }
-    }
+    }.flowOn(dispatcher)
 
     override fun getMarvelCharacterDetail(characterId: Int) = flow {
         try {
