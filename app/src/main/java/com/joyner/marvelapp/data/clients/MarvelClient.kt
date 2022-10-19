@@ -11,7 +11,8 @@ interface MarvelClient {
     suspend fun getMarvelCharacters(
         @Query("apikey") apiKey: String,
         @Query("ts") ts: String,
-        @Query("hash") hash: String
+        @Query("hash") hash: String,
+        @Query("limit") limit: Int
     ) : Response<MarvelCharactersResponse>
 
     @GET("characters/{characterId}")

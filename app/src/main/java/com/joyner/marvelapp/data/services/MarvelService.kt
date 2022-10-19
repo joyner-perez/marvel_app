@@ -15,10 +15,8 @@ class MarvelService @Inject constructor(
     private val dispatcher: CoroutineDispatcher
 ) {
     suspend fun getMarvelCharacters(): Response<MarvelCharactersResponse> {
-        return withContext(dispatcher) {
-            val marvelRequest = HashApi.createMarvelApiHash()
-            marvelClient.getMarvelCharacters(marvelRequest.apiKey, marvelRequest.ts, marvelRequest.hash)
-        }
+        val marvelRequest = HashApi.createMarvelApiHash()
+        return marvelClient.getMarvelCharacters(marvelRequest.apiKey, marvelRequest.ts, marvelRequest.hash, 100)
     }
 
     suspend fun getMarvelCharacterDetail(characterId: Int): Response<MarvelCharactersResponse> {
